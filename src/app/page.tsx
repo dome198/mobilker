@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import VacuumBackground from "@/components/background/VacuumBackground";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -33,8 +32,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <VacuumBackground />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0a0a0a] via-[#1a1a2e] to-[#0a0a0a]">
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -50,7 +48,7 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <Image
-              src="https://pub-d52c645f09ae4900a3a3c541035eb1b1.r2.dev/mobilker/mobilker-logo.webp"
+              src="/mobilker-logo.webp"
               alt="Mobilker Logo"
               width={200}
               height={200}

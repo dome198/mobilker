@@ -3,14 +3,20 @@
 :root {
   /* Sötét alapok */
   --background-deep: #050505;
-  --background-dark: #0a0a0f;
+  --background-dark: #0a0a0a;
+  --background-navy: #1a1a2e;
   --background-card: #121218;
 
-  /* Accent színek - Liquid metal */
-  --primary-cyan: #00f0ff;
-  --primary-purple: #a855f7;
-  --primary-pink: #ec4899;
-  --gold-accent: #fbbf24;
+  /* Világos alapok */
+  --background-light: #f8fafc;
+  --background-white: #ffffff;
+  --background-light-gray: #e2e8f0;
+
+  /* Accent színek */
+  --primary-cyan: #00d4ff;
+  --primary-blue: #0ea5e9;
+  --text-dark: #1e293b;
+  --text-gray: #64748b;
 
   --foreground: #ededed;
 }
