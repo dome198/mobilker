@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import VacuumBackground from "@/components/background/VacuumBackground";
 import { motion } from "framer-motion";
 import { Car, Factory } from "lucide-react";
+import Image from "next/image";
 
 export default function ValasztoPage() {
   const router = useRouter();
@@ -41,7 +42,14 @@ export default function ValasztoPage() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-16 relative z-10"
       >
-        <h1 className="text-6xl font-bold gradient-text mb-4">Mobilker</h1>
+        <Image
+          src="/mobilker-logo.png"
+          alt="Mobilker Logo"
+          width={250}
+          height={250}
+          className="mx-auto mb-6"
+          priority
+        />
         <p className="text-gray-400 text-lg">Válassz szolgáltatást</p>
       </motion.div>
 

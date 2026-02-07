@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import VacuumBackground from "@/components/background/VacuumBackground";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const PASS = "varikovacs";
 
@@ -42,14 +43,20 @@ export default function Home() {
         className="relative z-10"
       >
         <div className="glass rounded-2xl p-12 max-w-md w-full mx-4">
-          {/* Logo placeholder - majd a tényleges logóval helyettesítjük */}
           <motion.div
             className="text-center mb-8"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <h1 className="text-5xl font-bold gradient-text mb-2">Mobilker</h1>
+            <Image
+              src="/mobilker-logo.png"
+              alt="Mobilker Logo"
+              width={200}
+              height={200}
+              className="mx-auto mb-4"
+              priority
+            />
             <p className="text-gray-400 text-sm">Vákuumformázás & Autó Vizsgáztatás</p>
           </motion.div>
 
