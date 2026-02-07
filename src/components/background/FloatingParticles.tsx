@@ -21,8 +21,8 @@ export default function FloatingParticles() {
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
-            width: particle.size,
-            height: particle.size,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
           }}
           animate={{
             y: [0, -30, 0],
