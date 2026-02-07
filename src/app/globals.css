@@ -1,19 +1,90 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
+  /* Sötét alapok */
+  --background-deep: #050505;
+  --background-dark: #0a0a0f;
+  --background-card: #121218;
+
+  /* Accent színek - Liquid metal */
+  --primary-cyan: #00f0ff;
+  --primary-purple: #a855f7;
+  --primary-pink: #ec4899;
+  --gold-accent: #fbbf24;
+
   --foreground: #ededed;
 }
 
 @theme inline {
-  --color-background: var(--background);
+  --color-background-deep: var(--background-deep);
+  --color-background-dark: var(--background-dark);
+  --color-background-card: var(--background-card);
+  --color-primary-cyan: var(--primary-cyan);
+  --color-primary-purple: var(--primary-purple);
+  --color-primary-pink: var(--primary-pink);
+  --color-gold: var(--gold-accent);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
+  background: var(--background-deep);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Gradient utilities */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary-cyan), var(--primary-purple), var(--primary-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-border {
+  border-image: linear-gradient(135deg, var(--primary-cyan), var(--primary-purple)) 1;
+}
+
+/* Glow effects */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.glow-pink {
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(18, 18, 24, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-cyan), var(--primary-purple));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--primary-purple), var(--primary-pink));
 }
