@@ -110,7 +110,7 @@ export default function VakuumformazasPage() {
         </section>
 
         {/* Section 3: Technology */}
-        <section className="py-32 px-6 bg-gradient-to-b from-transparent via-primary-purple/5 to-transparent">
+        <section className="py-32 px-6 bg-[#0a0a0f]">
           <div className="max-w-7xl mx-auto">
             <motion.h2
               {...fadeInUp}
@@ -204,7 +204,7 @@ export default function VakuumformazasPage() {
         </section>
 
         {/* Section 5: Projects/References */}
-        <section className="py-32 px-6 bg-gradient-to-b from-transparent via-primary-pink/5 to-transparent">
+        <section className="py-32 px-6 bg-[#0a0a0f]">
           <div className="max-w-7xl mx-auto">
             <motion.h2
               {...fadeInUp}
@@ -275,7 +275,7 @@ export default function VakuumformazasPage() {
         </section>
 
         {/* Section 7: Machines */}
-        <section className="py-32 px-6 bg-gradient-to-b from-transparent via-primary-purple/5 to-transparent">
+        <section className="py-32 px-6 bg-[#0a0a0f]">
           <div className="max-w-7xl mx-auto">
             <motion.h2
               {...fadeInUp}

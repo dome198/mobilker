@@ -50,7 +50,7 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <Image
-              src="/mobilker-logo.png"
+              src="/mobilker-logo.webp"
               alt="Mobilker Logo"
               width={200}
               height={200}
