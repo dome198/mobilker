@@ -242,21 +242,46 @@ export default function AdminDashboardPage() {
 
   const handleImageUpload = async (key: string, file: File) => {
     setUploading(true);
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("key", key);
+    setSaveStatus(null);
 
-    const res = await fetch("/api/upload", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
-      body: formData,
-    });
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("key", key);
 
-    if (res.ok) {
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        setSaveStatus(`Kép feltöltési hiba: ${err.error || res.status}`);
+        setUploading(false);
+        return;
+      }
+
       const data = await res.json();
       handleChange(key, data.url);
-      setSaveStatus("Kép feltöltve! Ne felejtsd menteni.");
-    } else {
+
+      // Auto-save to content table
+      const saveRes = await fetch("/api/content", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ entries: [{ key, value: data.url }] }),
+      });
+
+      if (saveRes.ok) {
+        setContent((prev) => ({ ...prev, [key]: data.url }));
+        setSaveStatus("Kép feltöltve és mentve!");
+      } else {
+        setSaveStatus("Kép feltöltve, de mentés sikertelen!");
+      }
+    } catch {
       setSaveStatus("Kép feltöltési hiba!");
     }
 

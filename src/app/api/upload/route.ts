@@ -22,21 +22,26 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Missing file or key" }, { status: 400 });
   }
 
-  const buffer = Buffer.from(await file.arrayBuffer());
-  const url = await uploadToR2(buffer, file.name, file.type);
+  try {
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const url = await uploadToR2(buffer, file.name, file.type);
 
-  const supabase = createServiceClient();
-  await supabase
-    .from("mobilker_images")
-    .upsert(
-      {
-        key,
-        url,
-        filename: file.name,
-        updated_at: new Date().toISOString(),
-      },
-      { onConflict: "key" }
-    );
+    const supabase = createServiceClient();
+    await supabase
+      .from("mobilker_images")
+      .upsert(
+        {
+          key,
+          url,
+          filename: file.name,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "key" }
+      );
 
-  return NextResponse.json({ url });
+    return NextResponse.json({ url });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Upload failed";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
 }
