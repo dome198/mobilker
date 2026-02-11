@@ -1,26 +1,40 @@
 "use client";
 
+import { useState } from "react";
 import VacuumBackground from "@/components/background/VacuumBackground";
-import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, ClipboardCheck, Wrench, FileText, ArrowLeft } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MapPin, Phone, Mail, ClipboardCheck, Search, FileText, ArrowLeft, X } from "lucide-react";
 import Link from "next/link";
 
 export default function AutoVizsgaztatasPage() {
+  const [activeModal, setActiveModal] = useState<string | null>(null);
+
   const services = [
     {
       icon: ClipboardCheck,
       title: "Műszaki Vizsgáztatás",
       description: "Teljes körű műszaki vizsga lebonyolítása",
+      hasModal: true,
+      modalContent: {
+        title: "Műszaki Vizsgáztatás",
+        body: "Itt lesz a műszaki vizsgáztatás részletes leírása, árak, tudnivalók.",
+      },
     },
     {
-      icon: Wrench,
-      title: "Elővizsgálat",
-      description: "Részletes előzetes vizsgálat a sikeres átadáshoz",
+      icon: Search,
+      title: "Eredetiség Vizsgálat",
+      description: "Gépjármű eredetiség ellenőrzése szakértői vizsgálattal",
+      hasModal: true,
+      modalContent: {
+        title: "Eredetiség Vizsgálat",
+        body: "Itt lesz az eredetiség vizsgálat részletes leírása, árak, tudnivalók.",
+      },
     },
     {
       icon: FileText,
       title: "Adminisztráció",
       description: "Komplett ügyintézés egy helyen",
+      hasModal: false,
     },
   ];
 
@@ -68,7 +82,8 @@ export default function AutoVizsgaztatasPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + index * 0.1 }}
-              className="glass rounded-xl p-8 text-center hover:shadow-[0_10px_40px_rgba(0,240,255,0.2)] transition-all duration-300"
+              onClick={() => service.hasModal && setActiveModal(service.title)}
+              className={`glass rounded-xl p-8 text-center hover:shadow-[0_10px_40px_rgba(0,240,255,0.2)] transition-all duration-300 ${service.hasModal ? "cursor-pointer" : ""}`}
             >
               <div className="w-16 h-16 bg-gradient-to-br from-primary-cyan to-blue-500 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <service.icon className="w-8 h-8 text-white" />
@@ -119,25 +134,74 @@ export default function AutoVizsgaztatasPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-white mb-1">Helyszín</h3>
-                <p className="text-gray-400">Budapest, [Cím]</p>
+                <p className="text-gray-400">Vámospércs, Ady Endre u. 1, 4287</p>
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Map placeholder */}
+        {/* Google Maps */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="glass rounded-2xl p-8 h-96 flex items-center justify-center"
+          className="glass rounded-2xl overflow-hidden h-96"
         >
-          <div className="text-center">
-            <MapPin className="w-16 h-16 text-primary-cyan mx-auto mb-4" />
-            <p className="text-gray-400">Google Maps integráció helye</p>
-          </div>
+          <iframe
+            src="https://www.google.com/maps?q=Mobil-Ker+94+Kft,+Vámospércs,+Ady+Endre+u.+1,+4287&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Mobil-Ker 94 Kft. térkép"
+          />
         </motion.div>
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {activeModal && (() => {
+          const service = services.find((s) => s.title === activeModal);
+          if (!service?.modalContent) return null;
+          return (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4"
+              onClick={() => setActiveModal(null)}
+            >
+              <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                transition={{ duration: 0.3 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative glass rounded-2xl p-8 max-w-lg w-full border border-white/10"
+              >
+                <button
+                  onClick={() => setActiveModal(null)}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+                <div className="w-14 h-14 bg-gradient-to-br from-primary-cyan to-blue-500 rounded-xl flex items-center justify-center mb-5">
+                  <service.icon className="w-7 h-7 text-white" />
+                </div>
+                <h2 className="text-2xl font-bold text-white mb-4">
+                  {service.modalContent.title}
+                </h2>
+                <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+                  {service.modalContent.body}
+                </p>
+              </motion.div>
+            </motion.div>
+          );
+        })()}
+      </AnimatePresence>
     </div>
   );
 }
