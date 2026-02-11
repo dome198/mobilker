@@ -4,14 +4,15 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useContent } from "@/lib/useContent";
 
 const PASS = "varikovacs";
 
 export default function Home() {
   const router = useRouter();
-  const [unlocked, setUnlocked] = useState(false);
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
+  const { c } = useContent();
 
   useEffect(() => {
     if (localStorage.getItem("mobilker_auth") === PASS) {
@@ -23,7 +24,6 @@ export default function Home() {
     e.preventDefault();
     if (input === PASS) {
       localStorage.setItem("mobilker_auth", PASS);
-      setUnlocked(true);
       router.push("/valaszto");
     } else {
       setError(true);
@@ -48,14 +48,14 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <Image
-              src="https://pub-5936efa7ffdc4787bace059ff6c47de1.r2.dev/mobilker-logo-removebg-preview.png"
+              src={c("global.logo_url")}
               alt="Mobilker Logo"
               width={200}
               height={200}
               className="mx-auto mb-4"
               priority
             />
-            <p className="text-gray-400 text-sm">Vákuumformázás & Autó Vizsgáztatás</p>
+            <p className="text-gray-400 text-sm">{c("global.tagline")}</p>
           </motion.div>
 
           <form onSubmit={handleSubmit} className="space-y-6">

@@ -5,35 +5,37 @@ import VacuumBackground from "@/components/background/VacuumBackground";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Phone, Mail, ClipboardCheck, Search, FileText, ArrowLeft, X } from "lucide-react";
 import Link from "next/link";
+import { useContent } from "@/lib/useContent";
 
 export default function AutoVizsgaztatasPage() {
   const [activeModal, setActiveModal] = useState<string | null>(null);
+  const { c } = useContent();
 
   const services = [
     {
       icon: ClipboardCheck,
-      title: "Műszaki Vizsgáztatás",
-      description: "Teljes körű műszaki vizsga lebonyolítása",
+      title: c("auto.service1.title"),
+      description: c("auto.service1.description"),
       hasModal: true,
       modalContent: {
-        title: "Műszaki Vizsgáztatás",
-        body: "Teljes körű műszaki vizsga lebonyolítása gyorsan és megbízhatóan.\n\nA vizsgálat tartalmazza a jármű teljes műszaki állapotfelmérését a hatályos jogszabályok szerint.\n\nÁr: 22 000 Ft\n\nIdőpont egyeztetés telefonon vagy személyesen.",
+        title: c("auto.service1.title"),
+        body: c("auto.service1.modal_body"),
       },
     },
     {
       icon: Search,
-      title: "Eredetiség Vizsgálat",
-      description: "Gépjármű eredetiség ellenőrzése szakértői vizsgálattal",
+      title: c("auto.service2.title"),
+      description: c("auto.service2.description"),
       hasModal: true,
       modalContent: {
-        title: "Eredetiség Vizsgálat",
-        body: "Gépjármű eredetiség ellenőrzése szakértői vizsgálattal, hivatalos dokumentációval.\n\nA vizsgálat kiterjed a jármű alvázszámának, motorszámának és egyéb azonosítóinak ellenőrzésére.\n\nÁr: 45 000 Ft\n\nIdőpont egyeztetés telefonon vagy személyesen.",
+        title: c("auto.service2.title"),
+        body: c("auto.service2.modal_body"),
       },
     },
     {
       icon: FileText,
-      title: "Adminisztráció",
-      description: "Komplett ügyintézés egy helyen",
+      title: c("auto.service3.title"),
+      description: c("auto.service3.description"),
       hasModal: false,
     },
   ];
@@ -62,10 +64,10 @@ export default function AutoVizsgaztatasPage() {
           className="text-center mb-20"
         >
           <h1 className="text-6xl font-bold gradient-text mb-4">
-            Autó Vizsgáztatás
+            {c("auto.hero.title")}
           </h1>
           <p className="text-2xl text-gray-300">
-            Megbízható • Gyors • Pontos
+            {c("auto.hero.subtitle")}
           </p>
         </motion.div>
 
@@ -114,7 +116,7 @@ export default function AutoVizsgaztatasPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-white mb-1">Telefon</h3>
-                <p className="text-gray-400">+36 XX XXX XXXX</p>
+                <p className="text-gray-400">{c("auto.phone")}</p>
               </div>
             </div>
 
@@ -124,7 +126,7 @@ export default function AutoVizsgaztatasPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-white mb-1">Email</h3>
-                <p className="text-gray-400">info@mobilker.hu</p>
+                <p className="text-gray-400">{c("auto.email")}</p>
               </div>
             </div>
 
@@ -134,7 +136,7 @@ export default function AutoVizsgaztatasPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-white mb-1">Helyszín</h3>
-                <p className="text-gray-400">Vámospércs, Ady Endre u. 1, 4287</p>
+                <p className="text-gray-400">{c("auto.address")}</p>
               </div>
             </div>
           </div>

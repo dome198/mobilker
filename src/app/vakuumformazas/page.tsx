@@ -15,15 +15,50 @@ import {
   MapPin,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+import { useContent } from "@/lib/useContent";
 
 export default function VakuumformazasPage() {
+  const { c } = useContent();
+
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     whileInView: { opacity: 1, y: 0 },
     transition: { duration: 0.8 },
     viewport: { once: true }
   };
+
+  const whyCards = [
+    { icon: Layers, title: c("vakuum.why.card1.title"), desc: c("vakuum.why.card1.desc") },
+    { icon: Clock, title: c("vakuum.why.card2.title"), desc: c("vakuum.why.card2.desc") },
+    { icon: DollarSign, title: c("vakuum.why.card3.title"), desc: c("vakuum.why.card3.desc") },
+    { icon: TrendingUp, title: c("vakuum.why.card4.title"), desc: c("vakuum.why.card4.desc") },
+  ];
+
+  const stats = [
+    { number: c("vakuum.tech.stat1.number"), label: c("vakuum.tech.stat1.label") },
+    { number: c("vakuum.tech.stat2.number"), label: c("vakuum.tech.stat2.label") },
+    { number: c("vakuum.tech.stat3.number"), label: c("vakuum.tech.stat3.label") },
+  ];
+
+  const steps = [
+    { number: "1", title: c("vakuum.process.step1.title"), desc: c("vakuum.process.step1.desc") },
+    { number: "2", title: c("vakuum.process.step2.title"), desc: c("vakuum.process.step2.desc") },
+    { number: "3", title: c("vakuum.process.step3.title"), desc: c("vakuum.process.step3.desc") },
+    { number: "4", title: c("vakuum.process.step4.title"), desc: c("vakuum.process.step4.desc") },
+  ];
+
+  const projects = [
+    { title: c("vakuum.ref.project1.title"), subtitle: c("vakuum.ref.project1.subtitle"), category: c("vakuum.ref.project1.category"), image: c("vakuum.ref.project1.image") },
+    { title: c("vakuum.ref.project2.title"), subtitle: c("vakuum.ref.project2.subtitle"), category: c("vakuum.ref.project2.category"), image: c("vakuum.ref.project2.image") },
+    { title: c("vakuum.ref.project3.title"), subtitle: c("vakuum.ref.project3.subtitle"), category: c("vakuum.ref.project3.category"), image: c("vakuum.ref.project3.image") },
+  ];
+
+  const materials = [
+    { name: c("vakuum.materials.mat1.name"), properties: c("vakuum.materials.mat1.props") },
+    { name: c("vakuum.materials.mat2.name"), properties: c("vakuum.materials.mat2.props") },
+    { name: c("vakuum.materials.mat3.name"), properties: c("vakuum.materials.mat3.props") },
+    { name: c("vakuum.materials.mat4.name"), properties: c("vakuum.materials.mat4.props") },
+  ];
 
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
@@ -48,17 +83,17 @@ export default function VakuumformazasPage() {
           className="text-center max-w-5xl"
         >
           <h1 className="text-7xl md:text-8xl font-bold mb-6 text-white">
-            Vákuumformázás
+            {c("vakuum.hero.title")}
             <br />
             <span className="bg-gradient-to-r from-[#00d4ff] to-[#0ea5e9] bg-clip-text text-transparent">
-              Új Dimenzióban
+              {c("vakuum.hero.title2")}
             </span>
           </h1>
           <p className="text-2xl text-gray-300 mb-12">
-            15+ év tapasztalat • 500+ projekt • CNC precizitás
+            {c("vakuum.hero.subtitle")}
           </p>
           <button className="bg-gradient-to-r from-[#00d4ff] to-[#0ea5e9] text-white px-10 py-4 rounded-xl text-lg font-semibold hover:shadow-[0_0_30px_rgba(0,212,255,0.5)] transition-all duration-300">
-            Ingyenes Konzultáció
+            {c("vakuum.hero.cta")}
           </button>
         </motion.div>
 
@@ -86,7 +121,7 @@ export default function VakuumformazasPage() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="https://pub-5936efa7ffdc4787bace059ff6c47de1.r2.dev/veo-studio-creation-compressed.mp4" type="video/mp4" />
+          <source src={c("vakuum.video_url")} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 via-[#0a0a0a]/30 to-[#0a0a0a]/80 z-10" />
         <div className="absolute inset-0 flex items-center justify-center z-20">
@@ -95,7 +130,7 @@ export default function VakuumformazasPage() {
               {...fadeInUp}
               className="text-6xl font-bold text-white mb-6"
             >
-              Lásd Működés Közben
+              {c("vakuum.video.title")}
             </motion.h2>
           </div>
         </div>
@@ -108,38 +143,17 @@ export default function VakuumformazasPage() {
             {...fadeInUp}
             className="text-5xl font-bold text-center mb-4 text-[#1e293b]"
           >
-            Miért Válaszd a Vákuumformázást?
+            {c("vakuum.why.title")}
           </motion.h2>
           <motion.p
             {...fadeInUp}
             className="text-center text-[#64748b] text-lg mb-16 max-w-3xl mx-auto"
           >
-            A vákuumformázás rugalmas, költséghatékony megoldás bármilyen méretű projekthez
+            {c("vakuum.why.desc")}
           </motion.p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Layers,
-                title: "Sokféle Termék",
-                desc: "Csomagolás, burkolat, doboz – bármilyen forma"
-              },
-              {
-                icon: Clock,
-                title: "Rövid Gyártási Idő",
-                desc: "Egyszerre több termék is készülhet"
-              },
-              {
-                icon: DollarSign,
-                title: "Alacsony Szerszámköltség",
-                desc: "Gazdaságosabb mint a fröccsöntés"
-              },
-              {
-                icon: TrendingUp,
-                title: "Kis Sorozat",
-                desc: "Már 10 darabtól megéri"
-              }
-            ].map((item, index) => (
+            {whyCards.map((item, index) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -166,15 +180,11 @@ export default function VakuumformazasPage() {
             {...fadeInUp}
             className="text-5xl font-bold text-center mb-16 text-white"
           >
-            Technológia
+            {c("vakuum.tech.title")}
           </motion.h2>
 
           <div className="grid md:grid-cols-3 gap-16 mb-20">
-            {[
-              { number: "±0.1mm", label: "Pontosság" },
-              { number: "4-5", label: "Tengelyes CNC" },
-              { number: "ISO", label: "Minősítés" }
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -193,16 +203,24 @@ export default function VakuumformazasPage() {
 
           <motion.div
             {...fadeInUp}
-            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-16 text-center"
+            className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-16 text-center overflow-hidden"
           >
-            <Settings className="w-24 h-24 text-[#00d4ff] mx-auto mb-6" />
-            <h3 className="text-3xl font-bold text-white mb-4">
-              CNC Vezérelt Precizitás
-            </h3>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              4 és 5 tengelyes CNC marógépeink bármilyen forma megmunkálását képesek elvégezni
-              a legmagasabb precizitással.
-            </p>
+            {c("vakuum.tech.cnc_image") && (
+              <div className="absolute inset-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={c("vakuum.tech.cnc_image")} alt="" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-[#0a0a0a]/75" />
+              </div>
+            )}
+            <div className="relative z-10">
+              <Settings className="w-24 h-24 text-[#00d4ff] mx-auto mb-6" />
+              <h3 className="text-3xl font-bold text-white mb-4">
+                {c("vakuum.tech.cnc_title")}
+              </h3>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                {c("vakuum.tech.cnc_desc")}
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -214,18 +232,13 @@ export default function VakuumformazasPage() {
             {...fadeInUp}
             className="text-5xl font-bold text-center mb-20 text-[#1e293b]"
           >
-            Hogyan Dolgozunk?
+            {c("vakuum.process.title")}
           </motion.h2>
 
           <div className="space-y-16 relative">
             <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#00d4ff] to-[#0ea5e9] transform -translate-x-1/2 hidden md:block" />
 
-            {[
-              { number: "1", title: "Konzultáció", desc: "Megbeszéljük az elképzeléseket" },
-              { number: "2", title: "Tervezés", desc: "CAD modellezés és szerszámtervezés" },
-              { number: "3", title: "Gyártás", desc: "CNC marás és vákuumformázás" },
-              { number: "4", title: "Szállítás", desc: "Minőségellenőrzés és csomagolás" },
-            ].map((step, index) => (
+            {steps.map((step, index) => (
               <motion.div
                 key={step.number}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -259,15 +272,11 @@ export default function VakuumformazasPage() {
             {...fadeInUp}
             className="text-5xl font-bold text-center mb-16 text-white"
           >
-            Referenciák
+            {c("vakuum.ref.title")}
           </motion.h2>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { title: "Hét Próba", subtitle: "Csillagösvény", category: "Játék kellék" },
-              { title: "Honfoglaló", subtitle: "Kiállítási elem", category: "Múzeum" },
-              { title: "Őseink Nyomában", subtitle: "Interaktív kiállítás", category: "Oktatás" },
-            ].map((project, index) => (
+            {projects.map((project, index) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -276,9 +285,16 @@ export default function VakuumformazasPage() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all cursor-pointer"
               >
-                <div className="w-full h-48 bg-gradient-to-br from-[#00d4ff]/20 to-[#0ea5e9]/20 rounded-xl mb-6 flex items-center justify-center">
-                  <Package className="w-16 h-16 text-[#00d4ff]" />
-                </div>
+                {project.image ? (
+                  <div className="w-full h-48 rounded-xl mb-6 overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                  </div>
+                ) : (
+                  <div className="w-full h-48 bg-gradient-to-br from-[#00d4ff]/20 to-[#0ea5e9]/20 rounded-xl mb-6 flex items-center justify-center">
+                    <Package className="w-16 h-16 text-[#00d4ff]" />
+                  </div>
+                )}
                 <div className="text-sm text-[#00d4ff] mb-2">{project.category}</div>
                 <h3 className="text-2xl font-bold text-white mb-1">{project.title}</h3>
                 <p className="text-gray-400">{project.subtitle}</p>
@@ -295,16 +311,11 @@ export default function VakuumformazasPage() {
             {...fadeInUp}
             className="text-5xl font-bold text-center mb-16 text-[#1e293b]"
           >
-            Anyagok
+            {c("vakuum.materials.title")}
           </motion.h2>
 
           <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { name: "ABS", properties: "Ütésálló, tartós" },
-              { name: "PETG", properties: "Áttetsző, erős" },
-              { name: "PS", properties: "Gazdaságos" },
-              { name: "PC", properties: "Hőálló, prémium" },
-            ].map((material, index) => (
+            {materials.map((material, index) => (
               <motion.div
                 key={material.name}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -330,30 +341,44 @@ export default function VakuumformazasPage() {
             {...fadeInUp}
             className="text-5xl font-bold text-center mb-16 text-white"
           >
-            Gépparkunk
+            {c("vakuum.equipment.title")}
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div
               {...fadeInUp}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-10"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden"
             >
-              <h3 className="text-3xl font-bold text-white mb-4">Vákuumszívó Gépek</h3>
-              <p className="text-gray-400 text-lg leading-relaxed">
-                Többféle méretben és részben vagy teljesen automatizáltan végzik a feladatukat.
-                Precíz, megbízható gépek a tökéletes eredményért.
-              </p>
+              {c("vakuum.equipment.item1.image") && (
+                <div className="h-56 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={c("vakuum.equipment.item1.image")} alt={c("vakuum.equipment.item1.title")} className="w-full h-full object-cover" />
+                </div>
+              )}
+              <div className="p-10">
+                <h3 className="text-3xl font-bold text-white mb-4">{c("vakuum.equipment.item1.title")}</h3>
+                <p className="text-gray-400 text-lg leading-relaxed">
+                  {c("vakuum.equipment.item1.desc")}
+                </p>
+              </div>
             </motion.div>
 
             <motion.div
               {...fadeInUp}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-10"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden"
             >
-              <h3 className="text-3xl font-bold text-white mb-4">CNC Marógépek</h3>
-              <p className="text-gray-400 text-lg leading-relaxed">
-                4 és 5 tengelyes CNC vezérelt marógépeink bármilyen forma megmunkálását képesek
-                elvégezni a legmagasabb pontossággal.
-              </p>
+              {c("vakuum.equipment.item2.image") && (
+                <div className="h-56 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={c("vakuum.equipment.item2.image")} alt={c("vakuum.equipment.item2.title")} className="w-full h-full object-cover" />
+                </div>
+              )}
+              <div className="p-10">
+                <h3 className="text-3xl font-bold text-white mb-4">{c("vakuum.equipment.item2.title")}</h3>
+                <p className="text-gray-400 text-lg leading-relaxed">
+                  {c("vakuum.equipment.item2.desc")}
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -364,10 +389,10 @@ export default function VakuumformazasPage() {
         <div className="max-w-2xl mx-auto">
           <motion.div {...fadeInUp} className="text-center mb-12">
             <h2 className="text-5xl font-bold text-white mb-4">
-              Kérj Ingyenes Árajánlatot
+              {c("vakuum.form.title")}
             </h2>
             <p className="text-gray-400 text-lg">
-              Küldd el az elképzeléseidet és hamarosan felvesszük veled a kapcsolatot!
+              {c("vakuum.form.desc")}
             </p>
           </motion.div>
 
@@ -411,7 +436,7 @@ export default function VakuumformazasPage() {
           <div className="grid md:grid-cols-3 gap-16 mb-12">
             <div>
               <h3 className="text-3xl font-bold text-white mb-4">Mobilker</h3>
-              <p className="text-gray-400">Vákuumformázás szakértők</p>
+              <p className="text-gray-400">{c("vakuum.footer.tagline")}</p>
             </div>
 
             <div>
@@ -428,15 +453,15 @@ export default function VakuumformazasPage() {
               <div className="space-y-3 text-gray-400">
                 <div className="flex items-center space-x-2">
                   <Phone className="w-5 h-5 text-[#00d4ff]" />
-                  <span>+36 XX XXX XXXX</span>
+                  <span>{c("vakuum.phone")}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="w-5 h-5 text-[#00d4ff]" />
-                  <span>info@mobilker.hu</span>
+                  <span>{c("vakuum.email")}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <MapPin className="w-5 h-5 text-[#00d4ff]" />
-                  <span>Budapest, [Cím]</span>
+                  <span>{c("vakuum.address")}</span>
                 </div>
               </div>
             </div>

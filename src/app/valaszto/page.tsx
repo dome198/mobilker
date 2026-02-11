@@ -5,9 +5,11 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Car, Factory } from "lucide-react";
 import Image from "next/image";
+import { useContent } from "@/lib/useContent";
 
 export default function ValasztoPage() {
   const router = useRouter();
+  const { c } = useContent();
 
   useEffect(() => {
     if (localStorage.getItem("mobilker_auth") !== "varikovacs") {
@@ -41,7 +43,7 @@ export default function ValasztoPage() {
         className="text-center mb-16 relative z-10"
       >
         <Image
-          src="https://pub-5936efa7ffdc4787bace059ff6c47de1.r2.dev/mobilker-logo-removebg-preview.png"
+          src={c("global.logo_url")}
           alt="Mobilker Logo"
           width={250}
           height={250}
