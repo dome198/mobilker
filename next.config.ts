@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'pub-d52c645f09ae4900a3a3c541035eb1b1.r2.dev',
-        pathname: '/mobilker/**',
+        hostname: 'pub-5936efa7ffdc4787bace059ff6c47de1.r2.dev',
+        pathname: '/**',
       },
     ],
   },

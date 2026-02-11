@@ -41,7 +41,7 @@ export default function ValasztoPage() {
         className="text-center mb-16 relative z-10"
       >
         <Image
-          src="/mobilker-logo.webp"
+          src="https://pub-5936efa7ffdc4787bace059ff6c47de1.r2.dev/mobilker-logo-removebg-preview.png"
           alt="Mobilker Logo"
           width={250}
           height={250}
