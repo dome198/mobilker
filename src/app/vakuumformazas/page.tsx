@@ -345,41 +345,30 @@ export default function VakuumformazasPage() {
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <motion.div
-              {...fadeInUp}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden"
-            >
-              {c("vakuum.equipment.item1.image") && (
-                <div className="h-56 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c("vakuum.equipment.item1.image")} alt={c("vakuum.equipment.item1.title")} className="w-full h-full object-cover" />
-                </div>
-              )}
-              <div className="p-10">
-                <h3 className="text-3xl font-bold text-white mb-4">{c("vakuum.equipment.item1.title")}</h3>
-                <p className="text-gray-400 text-lg leading-relaxed">
-                  {c("vakuum.equipment.item1.desc")}
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              {...fadeInUp}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden"
-            >
-              {c("vakuum.equipment.item2.image") && (
-                <div className="h-56 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c("vakuum.equipment.item2.image")} alt={c("vakuum.equipment.item2.title")} className="w-full h-full object-cover" />
-                </div>
-              )}
-              <div className="p-10">
-                <h3 className="text-3xl font-bold text-white mb-4">{c("vakuum.equipment.item2.title")}</h3>
-                <p className="text-gray-400 text-lg leading-relaxed">
-                  {c("vakuum.equipment.item2.desc")}
-                </p>
-              </div>
-            </motion.div>
+            {[1, 2, 3, 4, 5].map((i) => {
+              const title = c(`vakuum.equipment.item${i}.title`);
+              if (!title) return null;
+              return (
+                <motion.div
+                  key={i}
+                  {...fadeInUp}
+                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden"
+                >
+                  {c(`vakuum.equipment.item${i}.image`) && (
+                    <div className="h-56 overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={c(`vakuum.equipment.item${i}.image`)} alt={title} className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                  <div className="p-10">
+                    <h3 className="text-3xl font-bold text-white mb-4">{title}</h3>
+                    <p className="text-gray-400 text-lg leading-relaxed">
+                      {c(`vakuum.equipment.item${i}.desc`)}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
