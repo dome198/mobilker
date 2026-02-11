@@ -355,7 +355,7 @@ export default function VakuumformazasPage() {
                   className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden"
                 >
                   {c(`vakuum.equipment.item${i}.image`) && (
-                    <div className="h-56 overflow-hidden">
+                    <div className="h-80 overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={c(`vakuum.equipment.item${i}.image`)} alt={title} className="w-full h-full object-cover" />
                     </div>
