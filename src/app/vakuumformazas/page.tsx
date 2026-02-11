@@ -345,7 +345,7 @@ export default function VakuumformazasPage() {
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {[1, 2, 3, 4, 5].map((i) => {
+            {[1, 2, 3, 4, 5, 6].map((i) => {
               const title = c(`vakuum.equipment.item${i}.title`);
               if (!title) return null;
               return (

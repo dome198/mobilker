@@ -168,6 +168,9 @@ const SECTIONS: Section[] = [
       { key: "vakuum.equipment.item5.image", label: "Gép 5 - Kép", type: "image" },
       { key: "vakuum.equipment.item5.title", label: "Gép 5 - Cím" },
       { key: "vakuum.equipment.item5.desc", label: "Gép 5 - Leírás", multiline: true },
+      { key: "vakuum.equipment.item6.image", label: "Gép 6 - Kép", type: "image" },
+      { key: "vakuum.equipment.item6.title", label: "Gép 6 - Cím" },
+      { key: "vakuum.equipment.item6.desc", label: "Gép 6 - Leírás", multiline: true },
     ],
   },
   {
