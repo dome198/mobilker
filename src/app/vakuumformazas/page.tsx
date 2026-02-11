@@ -79,22 +79,24 @@ export default function VakuumformazasPage() {
 
       {/* Section 2: Video Hero - Sötét + videó */}
       <section className="relative h-[80vh] overflow-hidden bg-[#0a0a0a]">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/50 via-transparent to-[#0a0a0a]/80 z-10" />
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#00d4ff]/10 to-[#0ea5e9]/10">
-          <div className="text-center z-20 px-6">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="https://pub-5936efa7ffdc4787bace059ff6c47de1.r2.dev/veo-studio-creation-compressed.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 via-[#0a0a0a]/30 to-[#0a0a0a]/80 z-10" />
+        <div className="absolute inset-0 flex items-center justify-center z-20">
+          <div className="text-center px-6">
             <motion.h2
               {...fadeInUp}
               className="text-6xl font-bold text-white mb-6"
             >
               Lásd Működés Közben
             </motion.h2>
-            <motion.p
-              {...fadeInUp}
-              transition={{ delay: 0.2 }}
-              className="text-xl text-gray-300"
-            >
-              Videó bemutató hamarosan
-            </motion.p>
           </div>
         </div>
       </section>

@@ -17,7 +17,7 @@ export default function AutoVizsgaztatasPage() {
       hasModal: true,
       modalContent: {
         title: "Műszaki Vizsgáztatás",
-        body: "Itt lesz a műszaki vizsgáztatás részletes leírása, árak, tudnivalók.",
+        body: "Teljes körű műszaki vizsga lebonyolítása gyorsan és megbízhatóan.\n\nA vizsgálat tartalmazza a jármű teljes műszaki állapotfelmérését a hatályos jogszabályok szerint.\n\nÁr: 22 000 Ft\n\nIdőpont egyeztetés telefonon vagy személyesen.",
       },
     },
     {
@@ -27,7 +27,7 @@ export default function AutoVizsgaztatasPage() {
       hasModal: true,
       modalContent: {
         title: "Eredetiség Vizsgálat",
-        body: "Itt lesz az eredetiség vizsgálat részletes leírása, árak, tudnivalók.",
+        body: "Gépjármű eredetiség ellenőrzése szakértői vizsgálattal, hivatalos dokumentációval.\n\nA vizsgálat kiterjed a jármű alvázszámának, motorszámának és egyéb azonosítóinak ellenőrzésére.\n\nÁr: 45 000 Ft\n\nIdőpont egyeztetés telefonon vagy személyesen.",
       },
     },
     {
