@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Car, Factory } from "lucide-react";
+import { Car, Box } from "lucide-react";
 import Image from "next/image";
 import { useContent } from "@/lib/useContent";
 
@@ -28,9 +28,9 @@ export default function ValasztoPage() {
     {
       title: "Vákuumformázás",
       description: "CNC precíziós vákuumszívás és megmunkálás",
-      icon: Factory,
+      icon: Box,
       path: "/vakuumformazas",
-      gradient: "from-primary-purple to-primary-pink",
+      gradient: "from-blue-500 to-cyan-500",
     },
   ];
 
