@@ -33,10 +33,10 @@ export default function ValasztoPage() {
       gradient: "from-blue-500 to-cyan-500",
     },
     {
-      title: "Aknaperem Emelő",
-      description: "Szerelőaknára telepíthető hidraulikus emelő",
+      title: "Egyedi Gépek & Eszközök",
+      description: "Saját fejlesztésű gépek és ipari eszközök",
       icon: ArrowUpFromLine,
-      path: "/aknaperem-emelo",
+      path: "/egyedi-gepek",
       gradient: "from-blue-500 to-cyan-500",
     },
   ];

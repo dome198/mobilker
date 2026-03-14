@@ -56,7 +56,7 @@ export default function AknaperemEmeloPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
       {/* Back button */}
-      <Link href="/valaszto">
+      <Link href="/egyedi-gepek">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -363,15 +363,15 @@ export default function AknaperemEmeloPage() {
           <motion.div {...fadeInUp} className="grid md:grid-cols-3 gap-6">
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center">
               <Phone className="w-6 h-6 text-[#00d4ff] mx-auto mb-3" />
-              <p className="text-gray-400 text-sm">+36 XX XXX XXXX</p>
+              <p className="text-gray-400 text-sm">+36 20 975 1333</p>
             </div>
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center">
               <Mail className="w-6 h-6 text-[#00d4ff] mx-auto mb-3" />
-              <p className="text-gray-400 text-sm">info@mobilker.hu</p>
+              <p className="text-gray-400 text-sm">andras@mobilker94.hu</p>
             </div>
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center">
               <MapPin className="w-6 h-6 text-[#00d4ff] mx-auto mb-3" />
-              <p className="text-gray-400 text-sm">Vámospércs</p>
+              <p className="text-gray-400 text-sm">Vámospércs, Ady Endre u. 1, 4287</p>
             </div>
           </motion.div>
         </div>

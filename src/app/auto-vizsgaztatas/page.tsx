@@ -116,7 +116,8 @@ export default function AutoVizsgaztatasPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-white mb-1">Telefon</h3>
-                <p className="text-gray-400">{c("auto.phone")}</p>
+                <p className="text-gray-400">+36 52 591 004</p>
+                <p className="text-gray-400">+36 20 937 4038</p>
               </div>
             </div>
 

@@ -442,15 +442,15 @@ export default function VakuumformazasPage() {
               <div className="space-y-3 text-gray-400">
                 <div className="flex items-center space-x-2">
                   <Phone className="w-5 h-5 text-[#00d4ff]" />
-                  <span>{c("vakuum.phone")}</span>
+                  <span>+36 20 975 1333</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="w-5 h-5 text-[#00d4ff]" />
-                  <span>{c("vakuum.email")}</span>
+                  <span>andras@mobilker94.hu</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <MapPin className="w-5 h-5 text-[#00d4ff]" />
-                  <span>{c("vakuum.address")}</span>
+                  <span>Vámospércs, Ady Endre u. 1, 4287</span>
                 </div>
               </div>
             </div>
