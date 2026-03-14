@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Car, Box } from "lucide-react";
+import { Car, Box, ArrowUpFromLine } from "lucide-react";
 import Image from "next/image";
 import { useContent } from "@/lib/useContent";
 
@@ -32,6 +32,13 @@ export default function ValasztoPage() {
       path: "/vakuumformazas",
       gradient: "from-blue-500 to-cyan-500",
     },
+    {
+      title: "Aknaperem Emelő",
+      description: "Szerelőaknára telepíthető hidraulikus emelő",
+      icon: ArrowUpFromLine,
+      path: "/aknaperem-emelo",
+      gradient: "from-blue-500 to-cyan-500",
+    },
   ];
 
   return (
@@ -53,7 +60,7 @@ export default function ValasztoPage() {
         <p className="text-gray-400 text-lg">Válassz szolgáltatást</p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-8 max-w-5xl w-full relative z-10">
+      <div className="grid md:grid-cols-3 gap-8 max-w-6xl w-full relative z-10">
         {cards.map((card, index) => (
           <motion.div
             key={card.path}
