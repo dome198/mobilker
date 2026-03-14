@@ -63,7 +63,7 @@ export default function VakuumformazasPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
       {/* Back button */}
-      <Link href="/valaszto">
+      <Link href="/">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}

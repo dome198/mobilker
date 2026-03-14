@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpFromLine } from "lucide-react";
 import Image from "next/image";
@@ -11,12 +10,6 @@ import { useContent } from "@/lib/useContent";
 export default function EgyediGepekPage() {
   const router = useRouter();
   const { c } = useContent();
-
-  useEffect(() => {
-    if (localStorage.getItem("mobilker_auth") !== "varikovacs") {
-      router.push("/");
-    }
-  }, [router]);
 
   const machines = [
     {
@@ -31,7 +24,7 @@ export default function EgyediGepekPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-b from-[#0a0a0a] via-[#1a1a2e] to-[#0a0a0a]">
 
-      <Link href="/valaszto">
+      <Link href="/">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}

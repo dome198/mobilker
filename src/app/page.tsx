@@ -1,110 +1,100 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { Car, Box, ArrowUpFromLine } from "lucide-react";
 import Image from "next/image";
 import { useContent } from "@/lib/useContent";
 
-const PASS = "varikovacs";
-
 export default function Home() {
   const router = useRouter();
-  const [input, setInput] = useState("");
-  const [error, setError] = useState(false);
   const { c } = useContent();
 
-  useEffect(() => {
-    if (localStorage.getItem("mobilker_auth") === PASS) {
-      router.push("/valaszto");
-    }
-  }, [router]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (input === PASS) {
-      localStorage.setItem("mobilker_auth", PASS);
-      router.push("/valaszto");
-    } else {
-      setError(true);
-      setTimeout(() => setError(false), 2000);
-    }
-  };
+  const cards = [
+    {
+      title: "Autó Vizsgáztatás",
+      description: "Műszaki vizsgáztatás, elővizsgálat, adminisztráció",
+      icon: Car,
+      path: "/auto-vizsgaztatas",
+      gradient: "from-blue-500 to-cyan-500",
+    },
+    {
+      title: "Vákuumformázás",
+      description: "CNC precíziós vákuumszívás és megmunkálás",
+      icon: Box,
+      path: "/vakuumformazas",
+      gradient: "from-blue-500 to-cyan-500",
+    },
+    {
+      title: "Egyedi Gépek & Eszközök",
+      description: "Saját fejlesztésű gépek és ipari eszközök",
+      icon: ArrowUpFromLine,
+      path: "/egyedi-gepek",
+      gradient: "from-blue-500 to-cyan-500",
+    },
+  ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0a0a0a] via-[#1a1a2e] to-[#0a0a0a]">
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-b from-[#0a0a0a] via-[#1a1a2e] to-[#0a0a0a]">
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10"
+        className="text-center mb-16 relative z-10"
       >
-        <div className="glass rounded-2xl p-12 max-w-md w-full mx-4">
-          <motion.div
-            className="text-center mb-8"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            <Image
-              src={c("global.logo_url")}
-              alt="Mobilker Logo"
-              width={200}
-              height={200}
-              className="mx-auto mb-4"
-              priority
-            />
-            <p className="text-gray-400 text-sm">{c("global.tagline")}</p>
-          </motion.div>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <motion.div
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              <input
-                type="password"
-                value={input}
-                onChange={(e) => {
-                  setInput(e.target.value);
-                  setError(false);
-                }}
-                placeholder="Jelszó"
-                autoFocus
-                className={`w-full rounded-lg border bg-white/5 px-4 py-3 text-white text-center outline-none transition-all duration-300 ${
-                  error
-                    ? "border-red-500 glow-pink"
-                    : "border-white/10 focus:border-primary-cyan focus:glow-cyan"
-                }`}
-              />
-            </motion.div>
-
-            <motion.button
-              type="submit"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full rounded-lg bg-gradient-to-r from-primary-cyan via-primary-purple to-primary-pink px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,240,255,0.5)]"
-            >
-              Belépés
-            </motion.button>
-
-            {error && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-red-400 text-sm text-center"
-              >
-                Hibás jelszó
-              </motion.p>
-            )}
-          </form>
-        </div>
+        <Image
+          src={c("global.logo_url")}
+          alt="Mobilker Logo"
+          width={250}
+          height={250}
+          className="mx-auto mb-6"
+          priority
+        />
+        <p className="text-gray-400 text-lg">Válassz szolgáltatást</p>
       </motion.div>
+
+      <div className="grid md:grid-cols-3 gap-8 max-w-6xl w-full relative z-10">
+        {cards.map((card, index) => (
+          <motion.div
+            key={card.path}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.2, duration: 0.6 }}
+            whileHover={{ y: -8, scale: 1.02 }}
+            onClick={() => router.push(card.path)}
+            className="glass rounded-2xl p-10 cursor-pointer transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,240,255,0.3)] group"
+          >
+            <div
+              className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+            >
+              <card.icon className="w-10 h-10 text-white" />
+            </div>
+
+            <h2 className="text-3xl font-bold text-white mb-3 group-hover:gradient-text transition-all duration-300">
+              {card.title}
+            </h2>
+
+            <p className="text-gray-400 leading-relaxed">{card.description}</p>
+
+            <div className="mt-6 flex items-center text-primary-cyan group-hover:translate-x-2 transition-transform duration-300">
+              <span className="font-semibold">Tovább</span>
+              <svg
+                className="w-5 h-5 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -46,7 +46,7 @@ export default function AutoVizsgaztatasPage() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-16">
         {/* Back button */}
-        <Link href="/valaszto">
+        <Link href="/">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
