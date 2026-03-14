@@ -215,64 +215,108 @@ export default function AknaperemEmeloPage() {
         </div>
       </section>
 
-      {/* Section 5: Dimensions - Dark */}
+      {/* Section 5: Installation Diagram - Dark */}
       <section className="py-32 px-6 bg-[#0a0a0a]">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto">
           <motion.h2
             {...fadeInUp}
-            className="text-5xl font-bold mb-16 text-white"
+            className="text-5xl font-bold text-center mb-6 text-white"
           >
-            Befogó Méretek
+            Telepítési Megoldás
           </motion.h2>
+          <motion.p
+            {...fadeInUp}
+            className="text-center text-gray-400 text-lg mb-16 max-w-2xl mx-auto"
+          >
+            Az emelő beton aknafalra telepíthető az aknadeszka alá, két különböző konfigurációban
+          </motion.p>
 
           <motion.div
             {...fadeInUp}
-            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-12"
+            className="bg-white rounded-2xl p-8 shadow-2xl"
           >
-            <div className="grid grid-cols-3 gap-8">
-              <div>
-                <div className="text-4xl font-bold bg-gradient-to-r from-[#00d4ff] to-[#0ea5e9] bg-clip-text text-transparent mb-2">
-                  1050 mm
-                </div>
-                <div className="text-gray-400">Hossz</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold bg-gradient-to-r from-[#00d4ff] to-[#0ea5e9] bg-clip-text text-transparent mb-2">
-                  700 mm
-                </div>
-                <div className="text-gray-400">Szélesség</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold bg-gradient-to-r from-[#00d4ff] to-[#0ea5e9] bg-clip-text text-transparent mb-2">
-                  400 mm
-                </div>
-                <div className="text-gray-400">Magasság</div>
-              </div>
-            </div>
-
-            <div className="mt-10 pt-8 border-t border-white/10 grid grid-cols-2 gap-8">
-              <div>
-                <div className="text-sm text-gray-500 mb-1">Kocsi tömege</div>
-                <div className="text-xl text-white font-semibold">50 kg</div>
-              </div>
-              <div>
-                <div className="text-sm text-gray-500 mb-1">Hidraulika tömege</div>
-                <div className="text-xl text-white font-semibold">15 kg</div>
-              </div>
-            </div>
+            <Image
+              src="/aknaperem-megoldasok.png"
+              alt="Aknaperem emelő telepítési megoldások - beton akna fal és aknadeszka"
+              width={1654}
+              height={2339}
+              className="w-full h-auto"
+              loading="lazy"
+            />
           </motion.div>
-
-          <motion.p
-            {...fadeInUp}
-            className="text-gray-500 text-sm mt-8"
-          >
-            Az akna szélességének eltérése a működési hosszban nem haladhatja meg az 5 mm-t.
-            Az akna peremének minimum 40 mm széles futófelülettel kell rendelkezni.
-          </motion.p>
         </div>
       </section>
 
-      {/* Section 6: CTA + Contact */}
+      {/* Section 6: Dimensions - Light */}
+      <section className="py-32 px-6 bg-[#f8fafc]">
+        <div className="max-w-5xl mx-auto">
+          <motion.h2
+            {...fadeInUp}
+            className="text-5xl font-bold text-center mb-6 text-[#1e293b]"
+          >
+            Méretrajz
+          </motion.h2>
+          <motion.p
+            {...fadeInUp}
+            className="text-center text-[#64748b] text-lg mb-16 max-w-2xl mx-auto"
+          >
+            Részletes műszaki rajz a pontos méretekkel
+          </motion.p>
+
+          <motion.div
+            {...fadeInUp}
+            className="bg-white rounded-2xl p-8 shadow-2xl mb-12"
+          >
+            <Image
+              src="/aknaperem-meretek.png"
+              alt="Aknaperem emelő méretrajz - 400x285x224mm"
+              width={1653}
+              height={2339}
+              className="w-full h-auto"
+              loading="lazy"
+            />
+          </motion.div>
+
+          <div className="grid grid-cols-3 gap-8 mb-8">
+            <div className="bg-white rounded-xl p-6 shadow-lg text-center">
+              <div className="text-3xl font-bold bg-gradient-to-r from-[#00d4ff] to-[#0ea5e9] bg-clip-text text-transparent mb-2">
+                400 mm
+              </div>
+              <div className="text-[#64748b]">Szélesség</div>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-lg text-center">
+              <div className="text-3xl font-bold bg-gradient-to-r from-[#00d4ff] to-[#0ea5e9] bg-clip-text text-transparent mb-2">
+                285 mm
+              </div>
+              <div className="text-[#64748b]">Magasság</div>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-lg text-center">
+              <div className="text-3xl font-bold bg-gradient-to-r from-[#00d4ff] to-[#0ea5e9] bg-clip-text text-transparent mb-2">
+                320 mm
+              </div>
+              <div className="text-[#64748b]">Belső szélesség</div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8">
+            <div className="bg-white rounded-xl p-6 shadow-lg text-center">
+              <div className="text-sm text-[#94a3b8] mb-1">Kocsi tömege</div>
+              <div className="text-xl text-[#1e293b] font-semibold">50 kg</div>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-lg text-center">
+              <div className="text-sm text-[#94a3b8] mb-1">Hidraulika tömege</div>
+              <div className="text-xl text-[#1e293b] font-semibold">15 kg</div>
+            </div>
+          </div>
+
+          <p className="text-[#94a3b8] text-sm mt-8 text-center">
+            Az akna szélességének eltérése a működési hosszban nem haladhatja meg az 5 mm-t.
+            Az akna peremének minimum 40 mm széles futófelülettel kell rendelkezni.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 7: CTA + Contact */}
       <section id="kapcsolat" className="py-32 px-6 bg-gradient-to-b from-[#0a0a0a] to-[#1a1a2e]">
         <div className="max-w-2xl mx-auto">
           <motion.div {...fadeInUp} className="text-center mb-12">
